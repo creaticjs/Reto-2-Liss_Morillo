@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ejercicio  1 Clase Bootmmerce</title>
+    <script src="../index.js"></script>
+    <link rel="stylesheet" href="../estilos.css">
+</head>
+<style>
+        table {           
+          border-collapse: collapse;
+          width: 250px;
+          border: 8px; 
+          background-color: #d4d1d1          
+          }           
+          th, td {
+          width: 250px;
+          text-align: center;
+          padding: 8px;
+                   
+          }
+          tr:nth-child(even){
+              background-color: #f2f2f2
+              }
+              
+
+          th {
+          height: 30px;
+          background-color: #4CAF50;
+          color: white;
+          }
+</style>
+<body>
+        <header id = "main-header">
+                <nav class="navegacion">
+                    <ul class="menu">
+                        <li><a href="../index.html">Inicio</a></li>
+                        <li><a href="#">Reto 2 Primera parte</a>
+                            <ul class="submenu">
+                                    <li><a href="ejercicio1.html">Ejercicio #1</a></li>
+                                    <li><a href="ejercicio2.html">Ejercicio #2</a></li>
+                                    <li><a href="ejercicio3.html">Ejercicio #3</a></li>
+                                    <li><a href="ejercicio4.html">Ejercicio #4</a></li>
+                                    <li><a href="ejercicio5.html">Ejercicio #5</a></li>
+                                    <li><a href="ejercicio6.html">Ejercicio #6</a></li>
+                                    <li><a href="ejercicio7.html">Ejercicio #7</a></li>
+                                    <li><a href="ejercicio8.html">Ejercicio #8</a></li>
+                                    <li><a href="ejercicio9.html">Ejercicio #9</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Reto 2 Segunda Parte </a>
+                                <ul class="submenu">
+                                    <li><a href="ejercicio10.html">Ejercicio #10</a></li>
+                                    <li><a href="ejercicio11.html">Ejercicio #11</a></li>
+                                    <li><a href="ejercicio12.html">Ejercicio #12</a></li>
+                                    <li><a href="ejercicio13.html">Ejercicio #13</a></li>
+                                    <li><a href="ejercicio14.html">Ejercicio #14</a></li>
+                                    <li><a href="ejercicio15.html">Ejercicio #15</a></li>
+                                    <li><a href="ejercicio16.html">Ejercicio #16</a></li>
+                                    <li><a href="ejercicio17.html">Ejercicio #17</a></li>
+                                    <li><a href="ejercicio18.html">Ejercicio #18</a></li>
+                                </ul>			
+                    </ul>
+                </nav>
+            </header>
+
+
+    <div class= "ejercicio1">
+    <p align="center">TABLA CON PROMEDIO</p>
+   
+
+    <table align="left">
+    
+            <tr >
+                <th>Media</th>
+                <th>Puntución</th>
+            </tr>
+        
+            <tr>
+                <td>90 - 100</td>
+                <td>A</td>
+            </tr>
+            <tr>
+                <td>80 - 89</td>
+                <td>B</td>
+            </tr>
+            <tr>
+                <td>70 - 79</td>
+                <td>C</td>
+            </tr>
+            <tr>
+                <td>60 - 69</td>
+                <td>D</td>
+            </tr>
+            <tr>
+                    <td>0 - 59</td>
+                    <td>E</td>
+            </tr>    
+    </table> 
+    <br>       
+    <div align="center">
+    <label >Por favor ingrese sus notas:</label>
+     <p></p>
+     <br>
+        <label>Nota 1:</label>
+        <td><input type="number" id="nota1" name="nota1" onKeyUp="if(this.value>99){this.value='99';}else if(this.value<0){this.value='0';}"/></td>
+        <p></p>
+        <br>
+        <label>Nota 2:</label>
+        <td><input type="number" id="nota2" name="nota2" onKeyUp="if(this.value>99){this.value='99';}else if(this.value<0){this.value='0';}"/></td>
+        <p></p>
+        <br>
+        <label>Nota 3:</label>
+        <td><input type="number" id="nota3" name="nota3" onKeyUp="if(this.value>99){this.value='99';}else if(this.value<0){this.value='0';}"/></td>
+        <p></p>
+        <br>
+        <label>Nota 4:</label>
+        <td><input type="number" id="nota4" name="nota4" onKeyUp="if(this.value>99){this.value='99';}else if(this.value<0){this.value='0';}"/></td>    
+        <p></p>
+        <br>
+        <td><button onclick="promedio()">RESULTADO</button></td>    
+        <p id="resultado"></p> 
+    </div>
+</div>
+
+
+</body>
+</html>
