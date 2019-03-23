@@ -164,6 +164,7 @@ function fecha(){
 }
 
 
+
 /*------- Ejercicio 8 --- Número convertir */
 
 function convertir_Numero(){
@@ -409,6 +410,8 @@ function romanos(roman){
     return Array(+digits.join("") + 1).join("M") + roman2;
 }
 
+
+
 /* Ejercicio 11 ---  2362=2400 ----- 2342= 2300 ---------*/
 function num_Aproximado(){
 
@@ -453,18 +456,33 @@ function num_Result(numeroA, numeroB, numeroC, numeroD){
 
 /* ejercicio 12 -- calcular_Edad---- -----------------substring*/
 function calcular_Edad(){
+    var fecha = document.getElementById("fechanacimiento").value;
+    var resultado = document.getElementById("resultado");
+    var fechaActual = new Date();
 
-    var fechanacimiento = document.getElementById("fechanacimiento").value;
-
-    
-    document.getElementById('resultado').innerHTML =  fechanacimiento;
-
-
-
-
-
+    if (validarValoresVacios([fecha])) {
+        var fechaPersona = new Date(fecha);
+        fechaPersona.setDate(fechaPersona.getDate() + 1);
+        var tiempoDiferencia = Math.abs(fechaActual.getTime() - fechaPersona.getTime());
+        var diasDiferencia = Math.ceil(tiempoDiferencia / (1000 * 3600 * 24));
+        if (diasDiferencia < 365) {
+            resultado.innerHTML = Math.trunc(diasDiferencia / 30) + " mes(es)";
+        } else {
+            resultado.innerHTML = Math.trunc(diasDiferencia / 365) + " años."
+        }
+    }
 }
 
+function validarValoresVacios(array) {
+    var validacion = array.find(function (item) {
+        return item === "";
+    });
+    if (validacion != "") return true;
+    else {
+        alert("Faltan valores");
+        return false;
+    }
+}
 
 
 
@@ -589,7 +607,7 @@ function calcularImpuesto(salarioI) {
 
 
 
-/* el 17 */
+/* el 16 */
 
 var tarifa = 0;
 var impuesto = 0;
@@ -631,17 +649,74 @@ function calcularsalario() {
  * Ejercicio 17
  */
 
- function pesetas(){
+function calcularPesetas() {
+    var pesetas = document.getElementById("txtPesetas").value;
 
-    var num = document.getElementById('numero').value;
-    var pesoCol = 21.14;
+    var resultado = document.getElementById("resultado");
+    if (validarValoresVacios([pesetas])) {
+        var pesos = parseFloat(pesetas) * 21.16;
+        var billetes = { cien: 0, cincuenta: 0, veinte: 0, diez: 0, cinco: 0, dos: 0, mil: 0 };
+        var monedas = { quinientos: 0, doscientos: 0, cien: 0, cincuenta: 0 };
+        if (pesos / 100000 >= 1) pesos = restarDinero(pesos, 100000, billetes, monedas);
+        if(pesos / 50000 >=1) pesos = restarDinero(pesos, 50000, billetes, monedas);
+        if(pesos / 20000 >=1) pesos = restarDinero(pesos, 20000, billetes, monedas);
+        if(pesos / 10000 >=1) pesos = restarDinero(pesos, 10000, billetes, monedas);
+        if(pesos / 5000 >=1) pesos = restarDinero(pesos, 5000, billetes, monedas);
+        if(pesos / 2000 >=1) pesos = restarDinero(pesos, 2000, billetes, monedas);
+        if(pesos / 1000 >=1) pesos = restarDinero(pesos, 1000, billetes, monedas);
+        if(pesos / 500 >=1) pesos = restarDinero(pesos, 500, billetes, monedas);
+        if(pesos / 200 >=1) pesos = restarDinero(pesos, 200, billetes, monedas);
+        if(pesos / 100 >=1) pesos = restarDinero(pesos, 100, billetes, monedas);
+        if(pesos / 50 >=1) pesos = restarDinero(pesos, 50, billetes, monedas);
+        resultado.innerHTML = '<div>' +'Billetes: '+'Cien mil: '+billetes.cien
+                            +', Cincuenta mil :'+billetes.cincuenta+', Veinte mil: '+ billetes.veinte
+                            +', Diez mil :'+billetes.diez+' , Cinco mil: '+billetes.cinco
+                            +', Dos mil :'+billetes.dos+' , mil: '+billetes.mil+'<br>'+
+                            'Monedas: Quinientos: '+ monedas.quinientos+' , Doscientos :'+monedas.doscientos
+                            +', cien: '+ monedas.cien+', ciencuenta: '+monedas.cincuenta + '</div>';
+    }
+}
 
-    var res = parseFloat(num)* pesoCol;      
+function restarDinero(dinero, resto, billetes, monedas) {
+    var numero = Math.trunc(dinero / resto);
+    switch (resto) {
+        case 100000:
+            billetes.cien = numero;
+            break;
+        case 50000:
+            billetes.cincuenta = numero;
+            break;
+        case 20000:
+            billetes.veinte = numero;
+            break;
 
-    
-    document.getElementById('resultado').innerHTML = "convertido en pesos colombianos es:" + res   ;
-
- }
+        case 10000:
+            billetes.diez = numero;
+            break;
+        case 5000:
+            billetes.cinco = numero;
+            break;
+        case 2000:
+            billetes.dos = numero;
+            break;
+        case 1000:
+            billetes.mil = numero;
+            break;
+        case 500:
+            monedas.quinientos = numero;
+            break;
+        case 200:
+            monedas.doscientos = numero;
+            break;
+        case 100:
+            monedas.cien = numero;
+            break;
+        case 50:
+            monedas.cincuenta = numero;
+            break;
+    }
+    return dinero % resto;
+}
 
 /*ejercicio 18 */
 function numero (){
